@@ -2,16 +2,17 @@
 FROM node:alpine3.18
 
 # setting the working directory
-WORKDIR /app
+RUN mkdir -p /srv/app/admin-server
+WORKDIR /srv/app/admin-server
 
 # Copying the package.json file to the working directory
-COPY package*.json ./
+COPY package*.json /srv/app/admin-server
 
 # Installing the dependencies
-RUN npm install
+RUN npm install --silent
 
 # Copying the resr of the files to the working directory
-COPY . .
+COPY . /srv/app/admin-server
 
 # Exposing the port 3000
 EXPOSE 3000

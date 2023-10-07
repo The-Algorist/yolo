@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  backend:
+    build: ./backend
+    expose:
+      - 3000
+    ports:
+      - "8000:3000"
+    volumes:
+      - ./backend/src:/srv/app/admin-server/src
+    command: npm run start
+    networks:
+      - yolo-network
+
+  client:
+    build: ./client
+    expose:
+      - 4000
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./client/src:/srv/app/admin-client/src
+      - ./frontend/public:/srv/app/admin-client/public
+    command: npm run start
+    networks:
+      - yolo-network
+
+networks:
+  yolo-network:
+    driver: bridge
+
+    
+

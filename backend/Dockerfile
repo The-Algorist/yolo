@@ -14,8 +14,5 @@ RUN npm install --silent
 # Copying the resr of the files to the working directory
 COPY . /srv/app/admin-server
 
-# Exposing the port 3000
-EXPOSE 3000
-
 # Running the app
 CMD ["npm", "start"]

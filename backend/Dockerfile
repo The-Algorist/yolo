@@ -2,6 +2,7 @@
 FROM node:alpine3.18
 
 # setting the working directory
+WORKDIR /app
 
 # Copying the package.json file to the working directory
 COPY package*.json ./

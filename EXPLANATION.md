@@ -4,7 +4,7 @@
 
 **For the client side:** I chose to use _ **node 18** _ **:** as build image. This is so as to compile the modules and packages and build them. I then went ahead to use _ **nginx:alpine** _ as the production image. The nginx:alpine is small and lightweight and quite secure thus bringing the final client image to a mere _ **69.5mb** 
 
-![Alt text](<explanation images/Image-sizes.png>)
+![Alt text](<explanation-images/Image-sizes.png>)
 
 
 **Dockerfile directives used in the creation and running of each container.**
@@ -93,7 +93,7 @@ _Assuming a tag X.Y.Z ; X represents the major version increment, Y represents a
 
  **There is a screenshot of mydeployed images on DockerHub, clearly showing the versions of the images**
  *client*
- ![Alt text](<explanation images/yolo-client.png>)
+ ![Alt text](<explanation-images/yolo-client.png>)
 
  *backend*
-![Alt text](<explanation images/yolo-backend.png>)
+![Alt text](<explanation-images/yolo-backend.png>)

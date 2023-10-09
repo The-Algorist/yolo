@@ -1,7 +1,7 @@
 # Dockerized E-commerce Platform
 This project is an e-commerce web application that has been containerized using Docker for easy deployment and scalability. It consists of two main components: a client-side application and a backend server. The application allows users to browse and purchase retail products, and it also provides functionality for administrators to add new products to the platform.
 
-![Alt text](<explanation images/yolo-demo.png>)
+![Alt text](<explanation-images/yolo-demo.png>)
 
 ## Table of Contents
 
@@ -192,4 +192,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
  ### Go ahead and add a product (note that the price field only takes a numeric input)
  ### Refresh to see the newly added product
 
- ### Here is a demo: <video src="explanation%20images/yolo-demo.mp4" controls title="Title"></video>
+ ### Here is a demo:<video src="explanation-images/yolo-demo.mp4" controls title="Title"></video>

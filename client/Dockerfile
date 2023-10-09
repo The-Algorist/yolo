@@ -1,36 +1,32 @@
-# Stage 1: Build the client application
-FROM node:alpine3.18 as builder
+# Use the official Node.js runtime as the base image
+FROM node:18 as build
 
-# Set the working directory within the container
-WORKDIR /srv/app/admin-client
+# Set the working directory in the container
+WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install all dependencies (including dev dependencies)
+# Install dependencies
 RUN npm install
 
-# Copy the source code to the container
-COPY src ./src
-COPY public ./public
+# Copy the entire application code to the container
+COPY . .
 
-# Build the client application (customize the build command if needed)
+# Build the React app for production
 RUN npm run build
 
-# Stage 2: Create a minimal production image
-FROM nginx:mainline-alpine3.18-slim
-# Copy the build artifacts from the builder stage into the NGINX web root
-COPY --from=builder /srv/app/admin-client/build /usr/share/nginx/html
+# Use Nginx as the production server
+FROM nginx:alpine
+
+# Copy the built React app to Nginx's web server directory
+COPY --from=build /app/build /usr/share/nginx/html
+
 RUN sed -i 's/80/3000/g' /etc/nginx/conf.d/default.conf
+#clearCOPY proxy.config /etc/nginx/conf.d/default.conf
 
-COPY proxy.config /etc/nginx/conf.d/default.conf
-
-# Expose port 3000 for the NGINX server
+# Expose port 80 for the Nginx server
 EXPOSE 3000
 
-
-# Start NGINX when the container runs
+# Start Nginx when the container runs
 CMD ["nginx", "-g", "daemon off;"]
-
-
-

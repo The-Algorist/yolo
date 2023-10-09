@@ -18,8 +18,7 @@ COPY public ./public
 RUN npm run build
 
 # Stage 2: Create a minimal production image
-FROM nginx:alpine
-
+FROM nginx:mainline-alpine3.18-slim
 # Copy the build artifacts from the builder stage into the NGINX web root
 COPY --from=builder /srv/app/admin-client/build /usr/share/nginx/html
 RUN sed -i 's/80/3000/g' /etc/nginx/conf.d/default.conf

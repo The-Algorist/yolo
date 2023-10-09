@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   backend:
+    container_name: yolo-backend
     build: ./backend
     expose:
       - 5000
@@ -13,6 +14,7 @@ services:
       - yolo-network
 
   client:
+    container_name: yolo-client
     build: ./client
     depends_on:
       - backend

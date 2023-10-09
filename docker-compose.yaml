@@ -10,7 +10,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./backend/src:/srv/app/admin-server/src
+      - yolo-volume:/srv/app/yolo
     command: ["npm","start"]
     networks:
       - yolo-network
@@ -25,8 +25,13 @@ services:
       - 3000
     ports:
       - "3000:3000"
+    volumes:
+      - yolo-volume:/srv/app/yolo
     networks:
       - yolo-network
+volumes:
+  yolo-volume:
+    driver: local
 
 networks:
   yolo-network:

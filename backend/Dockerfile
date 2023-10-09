@@ -31,6 +31,6 @@ COPY --from=builder /srv/app/admin-server ./
 EXPOSE 5000
 
 # Start the backend application
-CMD ["npm", "start"]
+CMD ["npm", "start"]               
 
 

@@ -1,18 +1,36 @@
-#Using a node alpine image
-FROM node:alpine3.18
+# Stage 1: Build the Node.js application
+FROM node:alpine as builder
 
-# setting the working directory
-RUN mkdir -p /srv/app/admin-server
+# Create a working directory within the container
 WORKDIR /srv/app/admin-server
 
-# Copying the package.json file to the working directory
-COPY package*.json /srv/app/admin-server
+# Copy only the package.json and package-lock.json files
+COPY package*.json ./
 
-# Installing the dependencies
-RUN npm install --silent
+# Install dependencies
+RUN npm ci --production --silent
 
-# Copying the resr of the files to the working directory
-COPY . /srv/app/admin-server
+RUN npm prune --production
 
-# Running the app
+# Copy the rest of the application files
+COPY . .
+
+# Build the application (if needed)
+# RUN npm run build
+
+# Stage 2: Create a minimal production image
+FROM node:alpine
+
+# Set the working directory within the container
+WORKDIR /srv/app/admin-server
+
+# Copy the application files and dependencies from the builder stage
+COPY --from=builder /srv/app/admin-server ./
+
+# Expose the port on which your backend server is listening (e.g., 5000)
+EXPOSE 5000
+
+# Start the backend application
 CMD ["npm", "start"]
+
+

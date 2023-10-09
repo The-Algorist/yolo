@@ -3,28 +3,28 @@ version: "3.7"
 services:
   backend:
     container_name: yolo-backend
-    build: ./backend
+    #build: ./backend
+    image: mysteryalgorist/yolo-backend:1.0.0
     expose:
       - 5000
     ports:
       - "5000:5000"
     volumes:
       - ./backend/src:/srv/app/admin-server/src
+    command: ["npm","start"]
     networks:
       - yolo-network
 
   client:
     container_name: yolo-client
-    build: ./client
+    #build: ./client
+    image: mysteryalgorist/yolo-client:1.1.0
     depends_on:
       - backend
     expose:
       - 3000
     ports:
       - "3000:3000"
-    volumes:
-      - ./client/src:/srv/app/admin-client/src
-      - ./client/public:/srv/app/admin-client/public
     networks:
       - yolo-network
 

@@ -1,0 +1,10 @@
+---
+- name: Create a Docker network
+  docker_network:
+    name: yolo-network
+    state: present
+
+- name: Set up shared volume
+  docker_volume:
+    name: yolo-volume
+    state: present

@@ -1,0 +1,19 @@
+- name: Pull backend image from Docker Hub
+  docker_image:
+    name: mysteryalgorist/yolo-backend:1.0.0
+    state: present
+
+
+- name: Build and start backend container
+  docker_container:
+    name: yolo-backend
+    image: mysteryalgorist/yolo-backend:1.0.0
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"
+    volumes:
+      - yolo-volume:/srv/app/yolo
+    command: ["npm", "start"]
+    networks:
+      - yolo-network

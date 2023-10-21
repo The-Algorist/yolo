@@ -1,0 +1,17 @@
+- name: Pull client image from Docker Hub
+  docker_image:
+    name: mysteryalgorist/yolo-client:1.1.0
+    state: present
+
+- name: Build and start client container
+  docker_container:
+    name: yolo-client
+    image: mysteryalgorist/yolo-client:1.1.0
+    volumes:
+      - yolo-volume:/srv/app/yolo
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    networks:
+      - yolo-network

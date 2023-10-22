@@ -1,10 +1,4 @@
 ---
-name: yolo-setup
-hosts: all
-become: true
-remote_user: root
-
-tasks:
   - name: Clone Yolo from GitHub
     git:
       repo: https://github.com/The-Algorist/yolo.git

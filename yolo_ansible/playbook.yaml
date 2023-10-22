@@ -4,8 +4,9 @@
   become: true
   remote_user: root
   roles:
-    - config
+    - server-configuration
     - docker-install
+    - clone-yolo
     - common
     - backend
     - client

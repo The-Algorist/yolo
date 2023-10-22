@@ -13,4 +13,4 @@
       state: present
       project_src: /opt/yolo
       compose_files:
-        - "{{ lookup('file', 'docker-compose.yaml') }}"
+        - "{{ docker_compose_file_path }}"

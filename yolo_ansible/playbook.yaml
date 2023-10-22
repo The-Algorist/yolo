@@ -3,7 +3,14 @@
   hosts: all
   become: true
   remote_user: root
+  gather_facts: true
+  become_method: sudo
+  become_user: root
+  become_flags: -H -S -n
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   roles:
+  
     - server-configuration
     - docker-install
     - clone-yolo

@@ -1,8 +1,17 @@
 ---
-- name: Clone Yolo from GitHub
-  git:
-    repo: https://github.com/The-Algorist/yolo.git
-    dest: /
-    clone: yes
-- name: Cd into Yolo directory
-  ansible.builtin.command: cd /yolo
+name: yolo-setup
+hosts: all
+become: true
+remote_user: root
+
+tasks:
+  - name: Clone Yolo from GitHub
+    git:
+      repo: https://github.com/The-Algorist/yolo.git
+      dest: /opt/yolo
+  - name: Initialize Yolo containers
+    docker_compose:
+      state: present
+      project_src: /opt/yolo
+      compose_files:
+        - "{{ lookup('file', 'docker-compose.yml') }}"

@@ -6,7 +6,7 @@
 
   - name: Find the path to the docker-compose.yaml file
     set_fact:
-      docker_compose_file_path: "{{ lookup('file', '/opt/yolo/docker-compose.yaml') }}"
+      docker_compose_file_path: "{{ lookup('file', '/opt/yolo/yolo_ansible/docker-compose.yaml') }}"
 
   - name: Initialize Yolo containers
     docker_compose:

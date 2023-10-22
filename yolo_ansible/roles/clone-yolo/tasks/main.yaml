@@ -2,13 +2,13 @@
   - name: Clone Yolo from GitHub
     git:
       repo: https://github.com/The-Algorist/yolo.git
-      dest: /home/
+      dest: /home/ubuntu/
       clone: yes
       update: yes
 
   - name: Find the path to the docker-compose.yaml file
     set_fact:
-      docker_compose_file_path: "{{ lookup('file', '/home/yolo/yolo_ansible/docker-compose.yaml') }}"
+      docker_compose_file_path: "{{ lookup('file', '/home/ubuntu/yolo/yolo_ansible/docker-compose.yaml') }}"
 
   - name: Initialize Yolo containers
     docker_compose:

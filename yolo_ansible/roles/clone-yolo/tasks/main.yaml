@@ -1,0 +1,8 @@
+---
+- name: Clone Yolo from GitHub
+  git:
+    repo: https://github.com/The-Algorist/yolo.git
+    dest: /
+    clone: yes
+- name: Cd into Yolo directory
+  ansible.builtin.command: cd /yolo

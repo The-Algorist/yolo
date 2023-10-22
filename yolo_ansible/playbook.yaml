@@ -14,6 +14,4 @@
     - server-configuration
     - docker-install
     - clone-yolo
-    - common
-    - backend
-    - client
+   

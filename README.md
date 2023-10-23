@@ -10,6 +10,7 @@ This project is an e-commerce web application that has been containerized using 
 - [Project Structure](#project-structure)
 - [Docker Containers](#docker-containers)
 - [Usage](#usage)
+- [Ansible Deployment](#ansible-deployment)
 - [Customization](#customization)
 - [Contributing](#contributing)
 - [License](#license)
@@ -20,6 +21,9 @@ Before you can run this application, ensure that you have the following software
 
 - Node.js and npm: Make sure you have Node.js and npm (Node Package Manager) installed. You can download them from the official website: [Node.js](https://nodejs.org/).
 - MongoDB: This application uses MongoDB as the database backend. You can either install MongoDB locally or use a cloud-based MongoDB service like MongoDB Atlas. Start the MongoDB service before running the application.
+- Ansible and Vagrant installed
+- VirtualBox
+  
 ## Getting Started
 
 Follow these steps to get the application up and running:
@@ -108,6 +112,10 @@ The project is structured as follows:
 
 - Dockerfile (backend): Specifies the Dockerfile for building the backend server container.
 
+- Vagrantfile: Contains Virtualbox configuration settings for running `vagrant up`
+  
+- yolo_ansible/* : This is a directory that contains all the ansible roles and configurations including the playbook.yaml
+
 ## Docker Containers
 
 The application has been containerized using Docker for easy deployment and management. There are two Docker containers: one for the client and one for the backend server. Docker Compose is used to orchestrate these containers.
@@ -170,6 +178,32 @@ docker exec -it backend-container-name sh
 
 Replace `client-container-name` and `backend-container-name` with the actual container names.
 
+## Ansible Deployment
+
+1. To deploy the application using ansible:
+   
+   - Make sure you're cloned into this repo as instructed above and are on the root directory
+       ![Alt text](explanation-images/root-directory.png)
+
+   - Make sure all the pre-requisites are met: Vagrant and VirtualBox are configured and well set up in your local environment
+
+
+ - if the above requirements have already been met, on your terminal run `vagrant up`
+      ![Alt text](<explanation-images/vagrant up.png>)
+
+ - then run `vagrant status`. The output should be as below:
+      ![Alt text](<explanation-images/vagrant status.png>)
+
+ - if the output is similar, run `vagrant provision`. If okay a message like this should appear:
+      ![Alt text](<explanation-images/vagrant provision.png>)
+
+
+ - confirm the running of containers by typing in the terminal `vagrant ssh`
+ - inside the vm: type `sudo docker ps -a`. An output of the following nature should appear as below.
+       ![Alt text](<explanation-images/vagrant ssh and sudo docker ps -a.png>)
+
+ - Access the application at `http://localhost:3000`. Test for persistence of data.
+  
 ## Customization
 
 You can customize the application by modifying the source code in the respective `client` and `backend` folders. Additionally, you can update the Dockerfiles and Docker Compose configuration to meet your specific requirements.

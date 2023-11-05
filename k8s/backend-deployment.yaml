@@ -28,4 +28,4 @@ spec:
       volumes:
         - name: shared-storage
           persistentVolumeClaim:
-            claimName: backend-pvc
+            claimName: shared-pvc

@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: backend-pvc
+  name: shared-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi  # Match the size with your PV
+      storage: 2Gi  # Match the size with your PV
+  storageClassName: standard  # Use an appropriate storage class

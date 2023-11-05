@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: mysteryalgorist/yolo-backend:1.0.0
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: shared-storage
+              mountPath: /srv/app/yolo
+          command: ["npm", "start"]
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      volumes:
+        - name: shared-storage
+          persistentVolumeClaim:
+            claimName: backend-pvc

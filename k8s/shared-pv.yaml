@@ -8,5 +8,6 @@ spec:
   accessModes:
     - ReadWriteOnce  # Adjust the access mode as needed
   storageClassName: standard  # Use an appropriate storage class
-  hostPath:
-    path: /data/shared  # Define the hostPath for the shared storage
+  csi:
+    driver: cs-gcepd.csi.storage.gke.io
+    volumeHandle: shared-pv

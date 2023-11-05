@@ -22,8 +22,8 @@ spec:
               mountPath: /srv/app/yolo
           resources:
             limits:
-              cpu: "0.5"  # Adjust CPU limit as needed
-              memory: "512Mi"  # Adjust memory limit as needed
+              cpu: "1"  # Adjust CPU limit as needed
+              memory: "1024Mi"  # Adjust memory limit as needed
       volumes:  # Define the shared storage volume
         - name: shared-storage
           persistentVolumeClaim:

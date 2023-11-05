@@ -23,8 +23,8 @@ spec:
           command: ["npm", "start"]
           resources:
             limits:
-              memory: "128Mi"
-              cpu: "500m"
+              memory: "512Mi"
+              cpu: "1000m"
       volumes:
         - name: shared-storage
           persistentVolumeClaim:

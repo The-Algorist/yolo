@@ -11,20 +11,20 @@ spec:
    ports:
    - containerPort: 5000
      protocol: TCP
-   imagePullPolicy: IfNotPresent
+   imagePullPolicy: Always
    resources:
      limits:
        cpu: "1"
        memory: 1Gi
      requests:
-       cpu: 500m
+       cpu: 1000m
        memory: 512Mi
  - image: mysteryalgorist/yolo-client:1.2.0
    name: client
    ports:
    - containerPort: 3000
      protocol: TCP
-   imagePullPolicy: IfNotPresent
+   imagePullPolicy: Always
    stdin: true
    tty: true
    resources:
@@ -32,6 +32,6 @@ spec:
        cpu: "1"
        memory: 1Gi
      requests:
-       cpu: 500m
+       cpu: 1000m
        memory: 512Mi
 

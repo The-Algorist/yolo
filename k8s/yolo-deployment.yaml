@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
- name: ecommerce-app
+ name: yolo-app
  labels:
-   app: ecommerce
+   app: yolo
 spec:
  containers:
  - image: mysteryalgorist/yolo-backend:1.1.0
@@ -12,6 +12,13 @@ spec:
    - containerPort: 5000
      protocol: TCP
    imagePullPolicy: IfNotPresent
+   resources:
+     limits:
+       cpu: "1"
+       memory: 1Gi
+     requests:
+       cpu: 500m
+       memory: 512Mi
  - image: mysteryalgorist/yolo-client:1.2.0
    name: client
    ports:
@@ -20,3 +27,11 @@ spec:
    imagePullPolicy: IfNotPresent
    stdin: true
    tty: true
+   resources:
+     limits:
+       cpu: "1"
+       memory: 1Gi
+     requests:
+       cpu: 500m
+       memory: 512Mi
+

@@ -52,12 +52,23 @@ Use the following commands to verify the deployment:
 
 ```bash
 kubectl get pods
+```
+![Alt text](<../explanation-images/pods running.png>)
+
+
+```bash
 kubectl get services
 ```
+![Alt text](<../explanation-images/Services and External IP.png>)
+
 You should see the pods and services running successfully.
 
 ### 6. Access the YoloApp
 To access the YoloApp, use the client's service IP and port (e.g., http://<Client-Service-IP>:3000). You can access the client application in a web browser.
+![Alt text](<../explanation-images/app running on IP.png>)
+
+## Application
+![Alt text](<../explanation-images/full app with product on GKE.png>)
 
 ## Customization
 You can customize the YAML files to adjust resources, image versions, and other settings as per your project requirements.

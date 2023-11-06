@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: ecommerce-app
+ labels:
+   app: ecommerce
+spec:
+ containers:
+ - image: mysteryalgorist/yolo-backend:1.1.0
+   name: backend
+   ports:
+   - containerPort: 5000
+     protocol: TCP
+   imagePullPolicy: IfNotPresent
+ - image: mysteryalgorist/yolo-client:1.2.0
+   name: client
+   ports:
+   - containerPort: 3000
+     protocol: TCP
+   imagePullPolicy: IfNotPresent
+   stdin: true
+   tty: true
